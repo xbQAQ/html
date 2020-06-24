@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2</title>
+	<style type="text/css">
+		*{padding: 0;margin: 0;list-style: none;text-decoration: none;}
+		/*第一版部分*/
+		.head{
+			height: 50px;
+			width: 100%;
+			background-color: #545861;
+		}
+		.head .img1{
+			position: absolute;
+			left: 100px;
+			top: 12px;
+			max-height: 30px;
+			max-width: 100%;
+		}
+		.head_word{
+			position: absolute;
+			right: 100px;
+			top: 12px;
+			text-align: center;
+			display: inline-block;
+		}
+		.head_word a{
+			color: #818798;
+			margin: 10px;
+			text-decoration: none;
+		}
+		.user:hover{color: white;}
+		
+		/*第二版部分*/
+		.video{
+			width: 100%; 
+			height: 100%;
+			z-index: -100;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.video video{
+			max-height: 100%;
+			max-width: 100%;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.back{
+			height: calc(100vh + 10px);
+		}
+		.back_img{
+			height: 100px;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+		.model_d1{
+			color: white;
+			font-size: 26px;
+			text-align: center;
+			display: inline-block;
+			position: relative;
+			top: 28px;
+			left: 100px;
+			transition: 0.5s;
+		}
+		.model_d1 a{
+			text-decoration: none;
+			color: white;
+		}
+		.model_d4{
+			background-color: rgba(0, 0, 0, 0.2);
+			display: none;
+			position: absolute;
+			top: 72px;
+			width: 500px;
+			height: 700px;
+			text-align: center;
+			transition: 0.5s;
+		}
+		.model_d4 .item{
+			width: 50%;
+			float: left;
+			line-height: 30px;
+		}
+		.model_d4 .item ul{
+			margin: 0px auto;
+			text-align: left;
+			width: 70%;
+		}
+		.model_d1:hover .model_d4{
+			display: block;
+		}
+		ul{color: white;font-size: 18px;}
+		li{color: rgba(255,255,255,0.8);font-size: 14px;}
+		.img1{
+			position: relative;
+			left: -200px;
+			top: -10px;
+			display: block;
+			height: 50px;
+		}
+		.search{
+			width: 250px;
+            border: 1px solid #fff;
+            border-radius: 25px;
+            padding: 2px 0;
+            display: flex;
+            margin: 0 auto;
+		}
+		.search_png{
+			width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #fff url("images/search.png") no-repeat center/15px 15px;
+            margin-left: 3px;
+            transition: .3s;
+		}
+		.search input{
+			flex-grow: 1;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            padding: 0 5px;
+            transition: .5s;
+		}
+		.icon{
+			width: 200px;
+			display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            right: 100px;
+            top: 85px;
+		}
+		.a1{background: url(images/itunes.png) no-repeat center;}
+		.a2{background: url(images/wechat.png) no-repeat center;}
+		.a3{background: url(images/github.png) no-repeat center;}
+		.a4{background: url(images/youtube.png) no-repeat center;}
+		.icon a{
+			display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background-color: transparent;
+            margin: 0 10px;
+            transition: .3s;
+            background-size: 35px 35px;
+		}
+		.icon a:hover{
+			background-color: white;
+		}
+		.bottom_l,.bottom_r{
+			position: absolute;
+			display: flex;
+			bottom: 50px;
+			width: 240px;
+			height: 70px;
+			background-color: white;
+			text-align: center;
+			line-height: 70px;
+			border-radius: 50px;
+			font-size: 18px;
+		}
+		.bottom_l .triangle, .bottom_r .triangle{
+			width: 50px;
+			height: 50px;
+			border:2px solid #CCC;
+			color: #CCC;
+			font-size: 24px;
+			border-radius: 90%;
+			display: inline-block;
+			line-height: 50px;
+			margin-top: 10px;
+			position: relative;
+			left: 5px;
+		}
+		.bottom_l span, .bottom_r span{
+			text-align: center;
+			position: relative;
+			left: 35px;
+		}
+		.bottom_l span a, .bottom_r span a{color: #CCC;}
+		.bottom_l{
+			left: -20%;
+		}
+		.bottom_r{
+			right: -20%;
+		}
+		.all:hover .bottom_l{left: 30%;transition: 1s;}
+		.all:hover .bottom_r{right: 30%;transition: 1s;}}
+
+		/*第三版部分*/
+		.new{
+			background: white;
+			height: 700px;
+		}
+		.new_img{
+			margin-top: 50px;
+			width: 350px;
+			height: 100px;
+			background: url(images/new.jpg) no-repeat;
+			background-size: 350px 100px;
+			border-radius: 90px;
+			position: relative;
+			left: 39%;
+		}
+		.new p{
+			color: red;
+			font-size: 14px;
+			margin-top: 20px;
+		}
+		.new_three_img{
+			width: 266px;
+			height: 250px;
+			box-shadow: 0px 0px 15px 3px #ccc;
+			overflow: hidden;
+			display: inline-block;
+			position: relative;
+			top: 100px;
+			left: 200px;
+			margin: 50px;
+		}
+		.shadow{
+			width: 266px;
+			height: 250px;
+			background-color: rgba(0,0,0,0.6);
+			position: absolute;
+			display: inline-block;
+			top: -250px;
+			left: 0px;
+			animation-timing-function: linear;
+		}
+		.shadow div{
+			color: white;
+			text-align: center;
+			margin: 20px;
+		}
+		.shadow .title{
+			height: 80px;
+			color: white;
+			font-size: 26px;
+			text-align: center;
+			position: relative;
+			top: 50px;
+		}
+		.shadow:nth-child(2){
+			font-size: 18px;
+		}
+		.new_three_img:hover .shadow{
+			transition: 0.5s;
+			top:0px;
+		}
+
+		/*第四版部分*/
+		.makeup{
+			height: 1000px;
+			background-color: white;
+		}
+		.makeup_head{
+			background-color: #47d147;
+			height: 350px;
+			width: 100%;
+			position: relative;
+			top: 200px;
+		}
+		.makeup_img{
+			margin-top: 50px;
+			width: 487px;
+			height: 83px;
+			background: url(images/shizhuang.jpg) no-repeat;
+			background-size: 487px 83px;
+			border-radius: 90px;
+			position: relative;
+			top: 20px;
+			left: 35%;
+		}
+		.makeup_word{
+			color: white;
+			font-size: 14px;
+			margin-top: 40px;
+		}
+		.makeup_picture{width: 100%;}
+		.makeup_three_img{
+			width: 291px;
+			height: 251px;
+			box-shadow: 0px 0px 15px 3px #ccc;
+			overflow: hidden;
+			display: inline-block;
+			position: relative;
+			top: 60px;
+			left: 200px;
+			margin: 50px;
+		}
+		.makeup_front,.makeup_back{
+			display: inline-block;
+			transition: all 1s ease-in;
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.makeup_back{
+			transform: rotateX(-180deg);
+		}
+		.makeup_three_img:hover .makeup_back{
+			transform: rotateX(0deg);
+		}
+		.makeup_three_img:hover .makeup_front{
+			transform: rotateX(180deg);
+		}
+	</style>
+
+
+	<script type="text/javascript">
+    	window.onload = function(){
+            setInterval("toggleSound()",100);
+        }
+
+    	function toggleSound() {
+                var music = document.getElementById("audio1");//获取ID     
+                if (music.paused) { //判读是否播放  
+                    music.paused=false;
+                    music.play(); //没有就播放 
+                }    
+        }
+	</script>
+
+</head>
+<body>
+	<span class="all">
+		<div class="head">
+			<img src="images/logo1.jpg" class="img1">
+			<span class="head_word">
+				<a href="#" class="user">登录</a>
+				<a href="#" class="user">注册</a>
+			</span>
+			
+		</div>
+		<div class="back">
+			<div class="back_img">
+				<div class="model_d1">
+					<a href="#">
+						<img src="images/sanxian.png"> 选项 
+						<img src="images/sanjiao.png">
+					</a>
+					<div class="model_d4">
+						<div class="img1"></div>
+						<div class="item">
+							<ul>护肤
+								<li>>洁面</li>
+								<li>>爽肤水</li>
+								<li>>精华</li>
+								<li>>乳液</li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>男士专区
+								<li>>爽肤水</li>
+								<li>>洁面</li>
+								<li>>面霜</li>
+								<li>>精华</li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>彩妆
+								<li>>加霜</li>
+								<li>>卸妆</li>
+								<li>>粉底液</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>香氛
+								<li>>女士香水</li>
+								<li>>男士香水</li>
+								<li>>中性香水</li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul>热门搜索
+								<li>>洗面奶</li>
+								<li>>去屑头</li>
+								<li>>隔离</li>
+								<li>>面膜</li>
+							</ul>
+						</div>
+						<div><img src="images/tu1.jpg"></div>
+					</div>
+
+				</div>
+				<div class="search">
+					<div class="search_png"></div>
+					<input type="text" placeholder="请输入您要搜索的信息">
+				</div>
+				<div class="icon">
+		            <a href="#" class="a1"></a>
+		            <a href="#" class="a2"></a>
+		            <a href="#" class="a3"></a>
+		            <a href="#" class="a4"></a>
+		        </div>
+		        <div class="video">
+			        <video autoplay class="video1" loop muted>
+						<source src="video/home_loop_720p.mp4" type="video/mp4">
+					</video>
+					<audio loop id="audio1">
+						<source src="audio/home.ogg" type="audio/ogg">
+					</audio>
+				</div>
+		        <div class="bottom_l">
+		            <div class="triangle">&gt;</div>
+		            <span><a href="#">STANDARD标准</a></span>
+		        </div>
+		        <div class="bottom_r">
+		            <div class="triangle">&gt;</div>
+		            <span><a href="#">HD高清</a></span>
+		        </div>
+			</div>
+		</div>
+	</span>
+	<div class="new">
+		<div class="new_img"></div>
+		<p class="new_word" align="center">补水保湿 提亮肤色 低敏配方 收缩毛孔 滋养容颜</p>
+		<div class="new_piciure">
+			<div class="new_three_img">
+				<img src="images/pic1.jpg">
+				<div class="shadow">
+					<div class="title">fresh skin 薏仁水</div>
+					<div>化妆水/爽肤水单品</div>
+					<div class="arrow"><img src="images/jiantou.png"></div>
+					<div class="heart"><img src="images/anniu.png"></div>
+				</div>
+			</div>
+			<div class="new_three_img"><img src="images/pic2.jpg">
+				<img src="images/pic2.jpg">
+				<div class="shadow">
+					<div class="title">蜂蜜原液天然滋养</div>
+					<div>美白护肤套装</div>
+					<div class="arrow"><img src="images/jiantou.png"></div>
+					<div class="heart"><img src="images/anniu.png"></div>
+				</div></div>
+			<div class="new_three_img"><img src="images/pic3.jpg">
+				<img src="images/pic3.jpg">
+				<div class="shadow">
+					<div class="title">纯情诱惑一抹惊艳</div>
+					<div>告别黯淡唇</div>
+					<div class="arrow"><img src="images/jiantou.png"></div>
+					<div class="heart"><img src="images/anniu.png"></div>
+				</div></div>
+		</div>
+	</div>
+	<div class="makeup">
+		<div class="makeup_head">
+			<div class="makeup_img"></div>
+			<p class="makeup_word" align="center">美化容颜 增添自信 突出个性</p>
+		</div>
+		<div class="makeup_picture">
+			<div class="makeup_three_img">
+				<img src="images/try4.jpg" class="makeup_back">
+				<img src="images/try1.jpg" class="makeup_front">
+			</div>
+			<div class="makeup_three_img">
+				<img src="images/try5.jpg" class="makeup_back">
+				<img src="images/try2.jpg" class="makeup_front">
+			</div>
+			<div class="makeup_three_img">
+				<img src="images/try6.jpg" class="makeup_back">
+				<img src="images/try3.jpg" class="makeup_front">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
